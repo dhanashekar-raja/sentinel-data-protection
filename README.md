@@ -20,3 +20,24 @@ This repository contains technical documentation for installation, configuration
 ## Version
 
 Documentation Version: **1.0**
+
+## Key Features
+
+- Data classification
+- Sensitive information protection
+- Access control management
+- Security policy enforcement
+- Audit and reporting
+
+## Target Audience
+
+This documentation is intended for:
+
+- System administrators
+- Security administrators
+- IT support engineers
+- Technical implementation teams
+
+## Support
+
+For product assistance, contact your organisation's designated *technical support team*.
