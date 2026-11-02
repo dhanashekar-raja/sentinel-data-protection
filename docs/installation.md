@@ -42,8 +42,8 @@ Follow the installation wizard and review the configuration options.
 
 Confirm that the installation completes successfully.
 
-> [!NOTE]
-> The installation commands and package names in this exercise are illustrative. They do not represent a tested installer.
+!!! note "NOTE"
+    The installation commands and package names in this exercise are illustrative. They do not represent a tested installer.
 
 ## Troubleshooting
 
@@ -70,8 +70,8 @@ After completing the installation, verify that Sentinel Data Protection is insta
 
 The installation is considered successful when the application files are present, required services are running, and the application interface is accessible.
 
-> [!NOTE]
-> The verification procedure is illustrative. Actual verification steps depend on the product's installation architecture.
+!!! note "NOTE"
+    The verification procedure is illustrative. Actual verification steps depend on the product's installation architecture.
 
 ## Default Application Port
 

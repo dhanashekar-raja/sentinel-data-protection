@@ -34,8 +34,8 @@ The following table represents the fictional supported environment for this exer
 4. Install the application.
 5. Configure the initial settings.
 
-> [!IMPORTANT]
-> Verify that the target environment meets all prerequisites before beginning installation.
+!!! important "IMPORTANT"
+    Verify that the target environment meets all prerequisites before beginning installation.
 
 ## Next Steps
 

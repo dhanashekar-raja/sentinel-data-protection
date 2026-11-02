@@ -1,41 +1,63 @@
+# Sentinel Data Protection
 
-# Sentinel Data Protection Documentation
+Enterprise data protection documentation.
 
-Welcome to the official documentation for Sentinel Data Protection.
+Welcome to the Sentinel Data Protection documentation portal. Find product guidance, administration procedures, installation instructions, and troubleshooting resources.
 
-Sentinel Data Protection is a fictional enterprise security platform designed to help organisations protect sensitive business information.
+---
 
-## Documentation Overview
+!!! info "PORTFOLIO DEMONSTRATION"
 
-This documentation provides guidance for administrators, IT professionals, and security teams.
+    This documentation portal is a sample project created for demonstration
+    and portfolio purposes. The product name, features, configuration
+    examples, workflows, and technical specifications are illustrative
+    and do not represent an actual commercial product or verified
+    product documentation.
 
-### Getting Started
+## Explore the Documentation
 
-Learn how to prepare your environment and begin using Sentinel Data Protection.
+<div class="grid cards" markdown>
 
-[Getting Started](getting-started.md)
+- :material-rocket-launch:{ .lg .middle } **Getting Started**
 
-### Installation
+    ---
 
-Learn about installation prerequisites and the installation procedure.
+    Learn about the product and prepare your environment.
 
-[Installation Guide](installation.md)
+    [Explore Getting Started](getting-started.md)
 
-### Configuration
+- :material-download:{ .lg .middle } **Installation**
 
-Learn how to configure product settings and security policies.
+    ---
 
-[Configuration Guide](configuration.md)
+    Review installation prerequisites and procedures.
 
-## Intended Audience
+    [View Installation Guide](installation.md)
 
-- System administrators
-- Security administrators
-- IT support engineers
-- Technical implementation teams
+- :material-cog:{ .lg .middle } **Configuration**
 
-## Documentation Version
+    ---
 
-| Version | Last Updated  |
-| ------- | ------------- |
-| **1.0** | November 2026 |
+    Understand product settings and security policies.
+
+    [Explore Configuration](configuration.md)
+
+- :material-account-group:{ .lg .middle } **Administration**
+
+    ---
+
+    Manage users, permissions, and audit information.
+
+    [View Administration](administration/index.md)
+
+</div>
+
+## Documentation Resources
+
+- [Troubleshooting](troubleshooting/index.md)
+- [Release Notes](release-notes/release-1.0.md)
+- [Contribution Guidelines](../CONTRIBUTING.md)
+
+## About This Documentation
+
+This is a fictional enterprise software documentation project developed as a technical writing and documentation engineering portfolio.

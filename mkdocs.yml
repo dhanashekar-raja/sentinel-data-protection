@@ -11,20 +11,27 @@ repo_name: sentinel-data-protection
 theme:
   name: material
   language: en
-
+  icon: docs/assets/images/favicon.png
+  favicon: assets/images/favicon.png
+  custom_dir: overrides
+  header:
+    logo: docs/assets/images/favicon.png
+    logo_alt: Sentinel Data Protection
+    title: Sentinel Data Protection
+    version: 1.0
   palette:
     - scheme: default
-      primary: Gray
-      accent: teal
+      primary: custom
+      accent: custom
       toggle:
-        icon: material/brightness-7
+        icon: material/weather-night
         name: Switch to dark mode
 
     - scheme: slate
-      primary: Gray
-      accent: teal
+      primary: custom
+      accent: custom
       toggle:
-        icon: material/brightness-4
+        icon: material/weather-sunny
         name: Switch to light mode
 
   font:
@@ -36,14 +43,19 @@ theme:
     - navigation.sections
     - navigation.top
     - navigation.indexes
+    - navigation.tabs.sticky
     - search.suggest
     - search.highlight
     - content.code.copy
+
+extra_css:
+  - stylesheets/extra.css
 
 plugins:
   - search
 
 markdown_extensions:
+  - meta
   - admonition
   - attr_list
   - md_in_html
@@ -52,7 +64,15 @@ markdown_extensions:
   - pymdownx.superfences
   - pymdownx.tabbed:
       alternate_style: true
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
 
+extra:
+  generator: false
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/dhanashekar-raja/sentinel-data-protection
 
 nav:
   - Home: index.md
