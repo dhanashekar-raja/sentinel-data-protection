@@ -53,7 +53,27 @@ Confirm that the installation completes successfully.
 | Insufficient permissions | Verify administrative privileges. |
 | Package unavailable      | Check the distribution location.  |
 
-## Related Documentation
+
+## Verify the Installation
+
+After completing the installation, verify that Sentinel Data Protection is installed correctly.
+
+### Verification Procedure
+
+1. Open the application installation directory.
+2. Confirm that the application files are present.
+3. Verify that the required application services are running.
+4. Review the installation logs for errors.
+5. Confirm that the application interface is accessible.
+
+### Expected Result
+
+The installation is considered successful when the application files are present, required services are running, and the application interface is accessible.
+
+> [!NOTE]
+> The verification procedure is illustrative. Actual verification steps depend on the product's installation architecture.
+
+## Related Information
 
 - [Getting Started](getting-started.md)
 - [Product Documentation](index.md)
