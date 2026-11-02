@@ -75,7 +75,7 @@ The installation is considered successful when the application files are present
 
 ## Default Application Port
 
-The default application port is 9443.
+The default application port is 8443.
 
 Administrators must ensure that the port is available before starting the application.
 
