@@ -73,6 +73,12 @@ The installation is considered successful when the application files are present
 > [!NOTE]
 > The verification procedure is illustrative. Actual verification steps depend on the product's installation architecture.
 
+## Default Application Port
+
+The default application port is 9443.
+
+Administrators must ensure that the port is available before starting the application.
+
 ## Related Information
 
 - [Getting Started](getting-started.md)
