@@ -16,7 +16,7 @@ Before installing the application, verify the following:
 
 ## Installation Workflow
 
-![Installation workflow](assets\images\installation-workflow.png)
+![Installation workflow](assets/images/installation-workflow.png)
 
 <small><b>Figure 1: Illustrative installation workflow.</b></small>
 

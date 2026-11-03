@@ -56,7 +56,7 @@ Welcome to the Sentinel Data Protection documentation portal. Find product guida
 
 - [Troubleshooting](troubleshooting/index.md)
 - [Release Notes](release-notes/release-1.0.md)
-- [Contribution Guidelines](../CONTRIBUTING.md)
+- [Contribution Guidelines](https://github.com/dhanashekar-raja/sentinel-data-protection/blob/main/CONTRIBUTING.md)
 
 ## About This Documentation
 

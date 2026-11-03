@@ -39,7 +39,7 @@ An audit record may contain the following fields:
 |---|---|---|
 | Timestamp | Date and time when the event occurred. | 2026-11-03 10:30:00 |
 | Event ID | Unique identifier assigned to the event. | EVT-10025 |
-| User | Account associated with the activity. | [admin@example.com](admin@example.com) |
+| User | Account associated with the activity. | `admin@example.com` |
 | Event type | Category of the recorded activity. | Configuration update |
 | Description | Summary of the activity. | Security policy modified |
 | Source | Originating IP address or system identifier, where available. | 192.0.2.10 |
