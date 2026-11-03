@@ -6,7 +6,7 @@ Welcome to the Sentinel Data Protection documentation portal. Find product guida
 
 ---
 
-!!! info "PORTFOLIO DEMONSTRATION"
+!!! info "Portfolio Demonstration"
 
     This documentation portal is a sample project created for demonstration
     and portfolio purposes. The product name, features, configuration

@@ -13,20 +13,20 @@ Before making configuration changes:
 - Record the existing configuration.
 - Test significant changes in a non-production environment before applying them to production.
 
-!!! warning "CONFIGURATION CHANGES"
+!!! warning "Configuration Changes"
     Incorrect configuration settings may affect user access, security policies or product functionality. Review each change before applying it.
 
 ## Configuration Areas
 
 The following table describes the primary configuration areas.
 
-| Configuration area | Description |
-|---|---|
-| General settings | Manage organisation-level preferences and product behaviour. |
-| Security policies | Define security requirements and data protection rules. |
-| User access | Configure user roles and access permissions. |
-| Notifications | Manage system alerts and administrative notifications. |
-| Audit logging | Configure the recording and retention of administrative activities. |
+| Configuration area | Description                                                         |
+| ------------------ | ------------------------------------------------------------------- |
+| General settings   | Manage organisation-level preferences and product behaviour.        |
+| Security policies  | Define security requirements and data protection rules.             |
+| User access        | Configure user roles and access permissions.                        |
+| Notifications      | Manage system alerts and administrative notifications.              |
+| Audit logging      | Configure the recording and retention of administrative activities. |
 
 ## General Settings
 
@@ -57,8 +57,32 @@ notifications:
   administrative_alerts: true
 ```
 
-!!! note "EXAMPLE CONFIGURATION"
+!!! note "Example Configuration"
     The YAML structure and values are illustrative. They do not represent a verified Sentinel product configuration format.
+
+## Advanced Configuration Details
+
+??? note "View example configuration"
+
+    The following YAML illustrates a possible configuration structure.
+
+    ```yaml
+    organisation:
+      name: Example Organisation
+      default_language: en
+
+    session:
+      timeout_minutes: 30
+    ```
+
+??? tip "Configuration validation checklist"
+
+    Before completing a configuration change:
+
+    - [ ] Verify the configuration values.
+    - [ ] Confirm administrator permissions.
+    - [ ] Test the expected behaviour.
+    - [ ] Record the configuration change.
 
 ## Security Policies
 
@@ -78,8 +102,7 @@ Administrators should review the following policy areas:
 2. Review the existing policy.
 3. Determine the required configuration change.
 4. Apply the change in a test environment.
-5. Validate the expected behaviour.
-6. Document and approve the change before production deployment.
+5. Document and approve the change before production deployment.
 
 ## User Access Configuration
 
@@ -134,6 +157,20 @@ If a configuration change does not produce the expected result:
 
 See [Common Issues](troubleshooting/common-issues.md) for additional troubleshooting guidance.
 
+## Documentation Callouts
+
+!!! note "Configuration Note"
+    Review the existing configuration before applying changes.
+
+!!! tip "Best Practice"
+    Test configuration changes in a non-production environment before deploying them.
+
+!!! warning "Important"
+    Incorrect security settings may affect user access and product behaviour.
+
+!!! danger "Critical Warning"
+    Do not share passwords, access tokens or other sensitive credentials in documentation.
+
 ## Related Documentation
 
 - [Installation](installation.md)
@@ -141,3 +178,7 @@ See [Common Issues](troubleshooting/common-issues.md) for additional troubleshoo
 - [Access Control](administration/access-control.md)
 - [Audit Logs](administration/audit-logs.md)
 - [Common Issues](troubleshooting/common-issues.md)
+
+<!----
+--8<-- "includes/portfolio-disclaimer.md"
+-->

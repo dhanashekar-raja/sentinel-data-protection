@@ -14,6 +14,37 @@ Before installing the application, verify the following:
 - The installation package is available.
 - Required network connections are configured.
 
+## Installation Workflow
+
+![Installation workflow](assets\images\installation-workflow.png)
+
+<small><b>Figure 1: Illustrative installation workflow.</b></small>
+
+## Installation Preparation
+
+Follow the instructions for your operating system.
+
+=== "Windows"
+
+    1. Sign in using an account with the required permissions.
+    2. Verify the available disk space.
+    3. Obtain the installation package.
+    4. Run the installer with the appropriate permissions.
+
+=== "Linux"
+
+    1. Sign in to the target server.
+    2. Verify the available disk space.
+    3. Obtain the installation package.
+    4. Verify the required execution permissions.
+
+=== "macOS"
+
+    1. Sign in using an account with the required permissions.
+    2. Verify the available disk space.
+    3. Obtain the installation package.
+    4. Follow the installation instructions for the package.
+
 ## Installation Procedure
 
 ### Step 1: Obtain the Installation Package
@@ -24,7 +55,7 @@ Download the installation package from the designated software distribution loca
 
 Extract the downloaded archive to a local directory.
 
-Example PowerShell command:
+**Example PowerShell command:**
 
 ```powershell
 Expand-Archive -Path ".\Sentinel.zip" -DestinationPath ".\Sentinel"
@@ -42,7 +73,7 @@ Follow the installation wizard and review the configuration options.
 
 Confirm that the installation completes successfully.
 
-!!! note "NOTE"
+!!! note "Note"
     The installation commands and package names in this exercise are illustrative. They do not represent a tested installer.
 
 ## Troubleshooting
@@ -70,7 +101,7 @@ After completing the installation, verify that Sentinel Data Protection is insta
 
 The installation is considered successful when the application files are present, required services are running, and the application interface is accessible.
 
-!!! note "NOTE"
+!!! note "Note"
     The verification procedure is illustrative. Actual verification steps depend on the product's installation architecture.
 
 ## Default Application Port

@@ -26,7 +26,7 @@ The following table describes example installation problems and their recommende
 | Installation stops unexpectedly | Insufficient disk space or system resources | Check available disk space and system resource availability. |
 | Configuration step fails | Invalid or incomplete configuration | Review the supplied configuration values and retry. |
 
-!!! note "ILLUSTRATIVE TROUBLESHOOTING SCENARIOS"
+!!! note "Illustrative Troubleshooting Scenarios"
     These issues and resolutions are examples for this portfolio project. They are not verified product error messages or vendor-supported remediation procedures.
 
 ## Troubleshooting Procedures
@@ -102,6 +102,28 @@ If the problem persists, review the operating system's security logs and install
 4. Correct any invalid values.
 5. Retry the failed configuration step, if supported by the installer.
 
+## Diagnostic Commands
+
+The following examples illustrate basic Windows troubleshooting commands.
+
+### Check network connectivity
+
+```powershell
+Test-NetConnection -ComputerName example.com -Port 8443
+```
+
+### Check available disk space
+```powershell
+Get-PSDrive -PSProvider FileSystem
+```
+
+### Check running services
+```powershell
+Get-Service
+```
+!!! note "Note"
+    Replace example hostnames and ports with values from your actual environment before running diagnostic commands.
+
 ## Collect Information for Support
 
 If the installation issue remains unresolved, collect the following information before escalating it.
@@ -115,7 +137,7 @@ If the installation issue remains unresolved, collect the following information 
 | Recent changes | Any recent system, network or configuration changes. |
 | Troubleshooting performed | Steps already completed and their results. |
 
-!!! tip "SUPPORT INFORMATION"
+!!! tip "Support Information"
     Include relevant installation logs and screenshots when submitting a support request. Remove passwords, access tokens and other sensitive information before sharing diagnostic files.
 
 ## Installation Verification
