@@ -1,0 +1,226 @@
+
+openapi: 3.1.0
+
+info:
+  title: Sentinel Data Protection API
+  version: 1.0.0
+  description: |
+    Illustrative API documentation for the
+    Sentinel Data Protection portfolio project.
+
+servers:
+  - url: https://api.sentinel.example.com/v1
+    description: Illustrative API server
+
+tags:
+  - name: Policies
+    description: Operations for managing data protection policies.
+
+paths:
+  /policies:
+    get:
+      summary: Retrieve all policies
+      operationId: listPolicies
+      tags:
+        - Policies
+      responses:
+        "200":
+          description: Successfully retrieved policies.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/PolicyListResponse"
+
+    post:
+      summary: Create a policy
+      operationId: createPolicy
+      tags:
+        - Policies
+      requestBody:
+        required: true
+        description: Information required to create a policy.
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/PolicyCreateRequest"
+      responses:
+        "201":
+          description: Policy created successfully.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Policy"
+        "400":
+          description: Invalid policy information.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+
+  /policies/{policyId}:
+    get:
+      summary: Retrieve a policy
+      operationId: getPolicy
+      tags:
+        - Policies
+      parameters:
+        - $ref: "#/components/parameters/PolicyId"
+      responses:
+        "200":
+          description: Policy retrieved successfully.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Policy"
+        "404":
+          description: Policy not found.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+
+    put:
+      summary: Update a policy
+      operationId: updatePolicy
+      tags:
+        - Policies
+      parameters:
+        - $ref: "#/components/parameters/PolicyId"
+      requestBody:
+        required: true
+        description: Updated policy information.
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/PolicyUpdateRequest"
+      responses:
+        "200":
+          description: Policy updated successfully.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Policy"
+        "404":
+          description: Policy not found.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+
+    delete:
+      summary: Delete a policy
+      operationId: deletePolicy
+      tags:
+        - Policies
+      parameters:
+        - $ref: "#/components/parameters/PolicyId"
+      responses:
+        "204":
+          description: Policy deleted successfully.
+        "404":
+          description: Policy not found.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+
+components:
+  parameters:
+    PolicyId:
+      name: policyId
+      in: path
+      required: true
+      description: Unique identifier of the policy.
+      schema:
+        type: string
+        example: POL-001
+
+  schemas:
+    Policy:
+      type: object
+      description: Represents a data protection policy.
+      properties:
+        id:
+          type: string
+          example: POL-001
+        name:
+          type: string
+          example: Confidential Data Policy
+        description:
+          type: string
+          example: Protects confidential business information.
+        status:
+          type: string
+          enum:
+            - active
+            - inactive
+          example: active
+        createdAt:
+          type: string
+          format: date-time
+          example: "2026-11-06T10:30:00Z"
+      required:
+        - id
+        - name
+        - status
+
+    PolicyCreateRequest:
+      type: object
+      properties:
+        name:
+          type: string
+          example: Confidential Data Policy
+        description:
+          type: string
+          example: Protects confidential business information.
+        status:
+          type: string
+          enum:
+            - active
+            - inactive
+          example: active
+      required:
+        - name
+        - status
+
+    PolicyUpdateRequest:
+      type: object
+      properties:
+        name:
+          type: string
+          example: Updated Confidential Data Policy
+        description:
+          type: string
+          example: Updated policy description.
+        status:
+          type: string
+          enum:
+            - active
+            - inactive
+          example: inactive
+      required:
+        - name
+        - status
+
+    PolicyListResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: "#/components/schemas/Policy"
+      required:
+        - data
+
+    ErrorResponse:
+      type: object
+      properties:
+        code:
+          type: string
+          example: POLICY_NOT_FOUND
+        message:
+          type: string
+          example: The requested policy could not be found.
+      required:
+        - code
+        - message
