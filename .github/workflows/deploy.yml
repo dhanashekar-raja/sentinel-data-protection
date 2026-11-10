@@ -30,10 +30,10 @@ jobs:
       - name: Synchronise OpenAPI specification
         run: |
           mkdir -p docs/api
-          cp openapi/sentinel-api.yaml docs/api/sentinel-api.yaml
+          cp openAPI/sentinel-api.yaml docs/api/sentinel-api.yaml
 
       - name: Validate OpenAPI specification
-        run: npx --yes @redocly/cli@2.77.0 lint --extends=minimal openapi/sentinel-api.yaml  
+        run: npx --yes @redocly/cli@2.77.0 lint --extends=minimal openAPI/sentinel-api.yaml  
 
       - name: Set up Python
         uses: actions/setup-python@v6
