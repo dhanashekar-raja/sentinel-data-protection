@@ -15,4 +15,7 @@ Protected operations require an access token in the Authorization header.
 
 ## API Operations
 
-<swagger-ui src="./sentinel-api.yaml"/>
+<swagger-ui 
+    src="./sentinel-api.yaml"
+    supportedSubmitMethods="[]"
+/>

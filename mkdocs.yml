@@ -56,7 +56,6 @@ plugins:
   - swagger-ui-tag:
       docExpansion: list
       filter: true
-      SupportedSubmitMethods: []
       validatorUrl: none
 
 markdown_extensions:
