@@ -12,6 +12,9 @@ servers:
   - url: https://api.sentinel.example.com/v1
     description: Illustrative API server
 
+security:
+  - BearerAuth: []
+
 tags:
   - name: Policies
     description: Operations for managing data protection policies.
@@ -30,6 +33,45 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/PolicyListResponse"
+
+        "401":
+          description: Missing or invalid authentication token.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+              examples:
+                Unauthorized:
+                  summary: Authentication failed
+                  value:
+                    code: UNAUTHENTICATED
+                    message: A valid access token is required.
+
+        "403":
+          description: Insufficient permissions to access policies.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+              examples: 
+                Forbidden:
+                  summary: Access denied
+                  value:
+                    code: FORBIDDEN
+                    message: You do not have permission to access policies.
+
+        "500":
+          description: An unexpected server error occurred.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+              examples: 
+                Forbidden:
+                  summary: Internal server error
+                  value:
+                    code: INTERNAL_SERVER_ERROR
+                    message: An unexpected error occurred while processing the request.
 
     post:
       summary: Create a policy
@@ -133,8 +175,15 @@ components:
       description: Unique identifier of the policy.
       schema:
         type: string
-        example: POL-001
+        examples: 
+          - POL-001
 
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+  
   schemas:
     Policy:
       type: object
@@ -142,23 +191,28 @@ components:
       properties:
         id:
           type: string
-          example: POL-001
+          examples: 
+            - POL-001
         name:
           type: string
-          example: Confidential Data Policy
+          examples: 
+            - Confidential Data Policy
         description:
           type: string
-          example: Protects confidential business information.
+          examples: 
+            - Protects confidential business information.
         status:
           type: string
           enum:
             - active
             - inactive
-          example: active
+          examples: 
+            - active
         createdAt:
           type: string
           format: date-time
-          example: "2026-11-06T10:30:00Z"
+          examples: 
+            - "2026-11-06T10:30:00Z"
       required:
         - id
         - name
@@ -169,16 +223,19 @@ components:
       properties:
         name:
           type: string
-          example: Confidential Data Policy
+          examples: 
+            - Confidential Data Policy
         description:
           type: string
-          example: Protects confidential business information.
+          examples: 
+            - Protects confidential business information.
         status:
           type: string
           enum:
             - active
             - inactive
-          example: active
+          examples: 
+            - active
       required:
         - name
         - status
@@ -188,16 +245,19 @@ components:
       properties:
         name:
           type: string
-          example: Updated Confidential Data Policy
+          examples: 
+            - Updated Confidential Data Policy
         description:
           type: string
-          example: Updated policy description.
+          examples: 
+            - Updated policy description.
         status:
           type: string
           enum:
             - active
             - inactive
-          example: inactive
+          examples: 
+            - inactive
       required:
         - name
         - status
@@ -214,13 +274,14 @@ components:
 
     ErrorResponse:
       type: object
+      description: Standard structure returned when an API request fails.
       properties:
         code:
           type: string
-          example: POLICY_NOT_FOUND
+          description: Machine-readable error identifier.
         message:
           type: string
-          example: The requested policy could not be found.
+          description: Human-readable explanation of the error.
       required:
         - code
         - message

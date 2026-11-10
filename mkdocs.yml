@@ -53,6 +53,11 @@ extra_css:
 
 plugins:
   - search
+  - swagger-ui-tag:
+      docExpansion: list
+      filter: true
+      SupportedSubmitMethods: []
+      validatorUrl: none
 
 markdown_extensions:
   - meta
@@ -83,6 +88,8 @@ nav:
   - Installation: installation.md
 
   - Configuration: configuration.md
+
+  - API Reference: api/index.md
 
   - Administration:
       - Overview: administration/index.md

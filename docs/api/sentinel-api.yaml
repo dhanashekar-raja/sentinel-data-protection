@@ -1,0 +1,287 @@
+
+openapi: 3.1.0
+
+info:
+  title: Sentinel Data Protection API
+  version: 1.0.0
+  description: |
+    Illustrative API documentation for the
+    Sentinel Data Protection portfolio project.
+
+servers:
+  - url: https://api.sentinel.example.com/v1
+    description: Illustrative API server
+
+security:
+  - BearerAuth: []
+
+tags:
+  - name: Policies
+    description: Operations for managing data protection policies.
+
+paths:
+  /policies:
+    get:
+      summary: Retrieve all policies
+      operationId: listPolicies
+      tags:
+        - Policies
+      responses:
+        "200":
+          description: Successfully retrieved policies.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/PolicyListResponse"
+
+        "401":
+          description: Missing or invalid authentication token.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+              examples:
+                Unauthorized:
+                  summary: Authentication failed
+                  value:
+                    code: UNAUTHENTICATED
+                    message: A valid access token is required.
+
+        "403":
+          description: Insufficient permissions to access policies.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+              examples: 
+                Forbidden:
+                  summary: Access denied
+                  value:
+                    code: FORBIDDEN
+                    message: You do not have permission to access policies.
+
+        "500":
+          description: An unexpected server error occurred.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+              examples: 
+                Forbidden:
+                  summary: Internal server error
+                  value:
+                    code: INTERNAL_SERVER_ERROR
+                    message: An unexpected error occurred while processing the request.
+
+    post:
+      summary: Create a policy
+      operationId: createPolicy
+      tags:
+        - Policies
+      requestBody:
+        required: true
+        description: Information required to create a policy.
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/PolicyCreateRequest"
+      responses:
+        "201":
+          description: Policy created successfully.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Policy"
+        "400":
+          description: Invalid policy information.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+
+  /policies/{policyId}:
+    get:
+      summary: Retrieve a policy
+      operationId: getPolicy
+      tags:
+        - Policies
+      parameters:
+        - $ref: "#/components/parameters/PolicyId"
+      responses:
+        "200":
+          description: Policy retrieved successfully.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Policy"
+        "404":
+          description: Policy not found.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+
+    put:
+      summary: Update a policy
+      operationId: updatePolicy
+      tags:
+        - Policies
+      parameters:
+        - $ref: "#/components/parameters/PolicyId"
+      requestBody:
+        required: true
+        description: Updated policy information.
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/PolicyUpdateRequest"
+      responses:
+        "200":
+          description: Policy updated successfully.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Policy"
+        "404":
+          description: Policy not found.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+
+    delete:
+      summary: Delete a policy
+      operationId: deletePolicy
+      tags:
+        - Policies
+      parameters:
+        - $ref: "#/components/parameters/PolicyId"
+      responses:
+        "204":
+          description: Policy deleted successfully.
+        "404":
+          description: Policy not found.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+
+components:
+  parameters:
+    PolicyId:
+      name: policyId
+      in: path
+      required: true
+      description: Unique identifier of the policy.
+      schema:
+        type: string
+        examples: 
+          - POL-001
+
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+  
+  schemas:
+    Policy:
+      type: object
+      description: Represents a data protection policy.
+      properties:
+        id:
+          type: string
+          examples: 
+            - POL-001
+        name:
+          type: string
+          examples: 
+            - Confidential Data Policy
+        description:
+          type: string
+          examples: 
+            - Protects confidential business information.
+        status:
+          type: string
+          enum:
+            - active
+            - inactive
+          examples: 
+            - active
+        createdAt:
+          type: string
+          format: date-time
+          examples: 
+            - "2026-11-06T10:30:00Z"
+      required:
+        - id
+        - name
+        - status
+
+    PolicyCreateRequest:
+      type: object
+      properties:
+        name:
+          type: string
+          examples: 
+            - Confidential Data Policy
+        description:
+          type: string
+          examples: 
+            - Protects confidential business information.
+        status:
+          type: string
+          enum:
+            - active
+            - inactive
+          examples: 
+            - active
+      required:
+        - name
+        - status
+
+    PolicyUpdateRequest:
+      type: object
+      properties:
+        name:
+          type: string
+          examples: 
+            - Updated Confidential Data Policy
+        description:
+          type: string
+          examples: 
+            - Updated policy description.
+        status:
+          type: string
+          enum:
+            - active
+            - inactive
+          examples: 
+            - inactive
+      required:
+        - name
+        - status
+
+    PolicyListResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: "#/components/schemas/Policy"
+      required:
+        - data
+
+    ErrorResponse:
+      type: object
+      description: Standard structure returned when an API request fails.
+      properties:
+        code:
+          type: string
+          description: Machine-readable error identifier.
+        message:
+          type: string
+          description: Human-readable explanation of the error.
+      required:
+        - code
+        - message
