@@ -18,11 +18,15 @@ security:
 tags:
   - name: Policies
     description: Operations for managing data protection policies.
+  - name: Secure Sharing
+    description: Operations for creating and managing secure file-sharing links.
 
 paths:
   /policies:
     get:
       summary: Retrieve all policies
+      # Existing GET operation
+
       operationId: listPolicies
       tags:
         - Policies
@@ -75,6 +79,8 @@ paths:
 
     post:
       summary: Create a policy
+      # Existing POST operation
+      
       operationId: createPolicy
       tags:
         - Policies
@@ -98,6 +104,106 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/ErrorResponse"
+
+  /sharing-links:
+    post:
+      summary: Create a secure sharing link
+      description: |
+        Creates a secure sharing link for a specified file.
+        Administrators can configure its expiration period
+        and optionally restrict access to specified email addresses.
+      operationId: createSharingLink
+      tags:
+        - Secure Sharing
+      requestBody:
+        required: true
+        description: Information required to create a sharing link.
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateSharingLinkRequest"
+            example:
+              fileId: FILE-1001
+              expirationDays: 7
+              allowedEmails:
+                - user@example.com
+                - partner@example.com
+      responses:
+        "201":
+          description: Sharing link created successfully.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SharingLink"
+              example:
+                linkId: LINK-5001
+                fileId: FILE-1001
+                url: https://share.example.com/LINK-5001
+                status: active
+                expiresAt: "2026-11-17T10:00:00Z"
+        "400":
+          description: The request contains invalid values.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+              example:
+                code: INVALID_REQUEST
+                message: One or more sharing-link fields are invalid.
+        "401":
+          description: Missing or invalid authentication token.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+              example:
+                code: UNAUTHENTICATED
+                message: A valid access token is required.
+        "403":
+          description: The caller does not have permission to create sharing links.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+              example:
+                code: FORBIDDEN
+                message: You do not have permission to create sharing links.
+        "404":
+          description: The specified file was not found.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+              example:
+                code: FILE_NOT_FOUND
+                message: The specified file could not be found.
+        "409":
+          description: The request conflicts with the current resource state.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+              example:
+                code: CONFLICT
+                message: The sharing-link request conflicts with the current file state.
+        "429":
+          description: The API rate limit has been exceeded.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+              example:
+                code: RATE_LIMIT_EXCEEDED
+                message: Too many requests. Try again later.
+        "500":
+          description: An unexpected server error occurred.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+              example:
+                code: INTERNAL_SERVER_ERROR
+                message: An unexpected error occurred while processing the request.
 
   /policies/{policyId}:
     get:
@@ -271,6 +377,78 @@ components:
             $ref: "#/components/schemas/Policy"
       required:
         - data
+
+    CreateSharingLinkRequest:
+      type: object
+      description: Request body for creating a secure sharing link.
+      properties:
+        fileId:
+          type: string
+          description: Unique identifier of the file to share.
+          examples:
+            - FILE-1001
+        expirationDays:
+          type: integer
+          description: Number of days before the sharing link expires.
+          minimum: 1
+          maximum: 30
+          examples:
+            - 7
+        allowedEmails:
+          type: array
+          description: Email addresses permitted to access the shared file.
+          maxItems: 10
+          items:
+            type: string
+            format: email
+          examples:
+            - - user@example.com
+              - partner@example.com
+      required:
+        - fileId
+        - expirationDays
+
+    SharingLink:
+      type: object
+      description: Details of a generated secure sharing link.
+      properties:
+        linkId:
+          type: string
+          description: Unique identifier of the sharing link.
+          examples:
+            - LINK-5001
+        fileId:
+          type: string
+          description: Identifier of the shared file.
+          examples:
+            - FILE-1001
+        url:
+          type: string
+          format: uri
+          description: Generated URL used to access the shared file.
+          examples:
+            - https://share.example.com/LINK-5001
+        status:
+          type: string
+          description: Current status of the sharing link.
+          enum:
+            - active
+            - revoked
+            - expired
+          examples:
+            - active
+        expiresAt:
+          type: string
+          format: date-time
+          description: Date and time when the sharing link expires, in UTC.
+          examples:
+            - "2026-11-17T10:00:00Z"
+      required:
+        - linkId
+        - fileId
+        - url
+        - status
+        - expiresAt
 
     ErrorResponse:
       type: object
