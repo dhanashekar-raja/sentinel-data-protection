@@ -11,14 +11,9 @@ repo_name: sentinel-data-protection
 theme:
   name: material
   language: en
-  icon: docs/assets/images/favicon.png
+  logo: assets/images/favicon.png
   favicon: assets/images/favicon.png
   custom_dir: overrides
-  header:
-    logo: docs/assets/images/favicon.png
-    logo_alt: Sentinel Data Protection
-    title: Sentinel Data Protection
-    version: 1.0
   palette:
     - scheme: default
       primary: custom

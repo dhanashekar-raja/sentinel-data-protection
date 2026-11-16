@@ -47,7 +47,7 @@ This is a fictional enterprise software documentation project developed as a tec
 
     [Explore Configuration](configuration.md)
 
-- :material-api:{ .lg .right} **API Reference**
+- :material-file-code:{ .lg .middle} **API Reference**
     
     ---
 
