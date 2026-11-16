@@ -79,6 +79,7 @@ paths:
 
     post:
       summary: Create a policy
+      description: Creates a new data protection policy using the supplied name, description, and status.
       # Existing POST operation
       
       operationId: createPolicy
@@ -227,6 +228,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/ErrorResponse"
 
+
     put:
       summary: Update a policy
       operationId: updatePolicy
@@ -255,6 +257,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/ErrorResponse"
 
+
     delete:
       summary: Delete a policy
       operationId: deletePolicy
@@ -271,6 +274,7 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/ErrorResponse"
+
 
 components:
   parameters:

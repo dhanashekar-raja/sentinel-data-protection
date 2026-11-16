@@ -1,10 +1,14 @@
 # Sentinel Data Protection
 
-Enterprise data protection documentation.
+## Enterprise Data Protection Documentation
 
 Welcome to the Sentinel Data Protection documentation portal. Find product guidance, administration procedures, installation instructions, and troubleshooting resources.
 
 ---
+
+## About This Documentation
+
+This is a fictional enterprise software documentation project developed as a technical writing and documentation engineering portfolio.
 
 !!! info "Portfolio Demonstration"
 
@@ -13,6 +17,7 @@ Welcome to the Sentinel Data Protection documentation portal. Find product guida
     examples, workflows, and technical specifications are illustrative
     and do not represent an actual commercial product or verified
     product documentation.
+
 
 ## Explore the Documentation
 
@@ -42,7 +47,16 @@ Welcome to the Sentinel Data Protection documentation portal. Find product guida
 
     [Explore Configuration](configuration.md)
 
-- :material-account-group:{ .lg .middle } **Administration**
+- :material-api:{ .lg .right} **API Reference**
+    
+    ---
+
+    Explore the Sentinel Data Protection API operations.
+
+    [Explore API Reference](api/index.md#api-operations)
+
+
+- :material-account-group:{ .lg .right } **Administration**
 
     ---
 
@@ -50,14 +64,29 @@ Welcome to the Sentinel Data Protection documentation portal. Find product guida
 
     [View Administration](administration/index.md)
 
+
+- :material-help-circle:{ .lg .right } **Troubleshooting**
+
+    ---
+
+    Identify and resolve common Sentinel Data Protection issues.
+
+    [Review Troubleshooting](troubleshooting/index.md#troubleshooting)
+
+
+- :material-note-text:{ .lg .middle } **Release Notes**
+
+    ---
+
+    View the new features, updates, and fixes.
+
+    [Read Release Notes](release-notes/release-1.0.md#release-notes--version-10)        
+
 </div>
 
-## Documentation Resources
+<!---## Documentation Resources
 
 - [Troubleshooting](troubleshooting/index.md)
 - [Release Notes](release-notes/release-1.0.md)
 - [Contribution Guidelines](https://github.com/dhanashekar-raja/sentinel-data-protection/blob/main/CONTRIBUTING.md)
-
-## About This Documentation
-
-This is a fictional enterprise software documentation project developed as a technical writing and documentation engineering portfolio.
+--->

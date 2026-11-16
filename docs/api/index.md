@@ -1,6 +1,6 @@
 # Sentinel Data Protection API Reference
 
-Explore the Sentinel Data Protection API operations using the interactive reference below.
+Explore the Sentinel Data Protection API operations using the embedded API reference below.
 
 !!! info "Portfolio Demonstration"
     This API specification describes a fictional product.
